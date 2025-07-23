@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des clients - Guest House Espérance{% endblock %}
+
+{% block content %}
+<h2>Clients enregistrés</h2>
+<ul>
+    {% for client in clients %}
+        <li>{{ client.nom }} - {{ client.email }} - {{ client.telephone }}</li>
+    {% empty %}
+        <li>Aucun client enregistré.</li>
+    {% endfor %}
+</ul>
+<br>
+<a href="{% url 'ajouter_client' %}">Ajouter un nouveau client</a>
+{% endblock %}

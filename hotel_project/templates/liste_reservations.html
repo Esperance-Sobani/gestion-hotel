@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des réservations{% endblock %}
+
+{% block content %}
+<h2>Liste des réservations</h2>
+
+{% for r in reservations %}
+  <div class="reservation-card">
+    <h3>Client : {{ r.client.nom }} {{ r.client.prenom }}</h3>
+    <p>Chambre : {{ r.chambre.nom }} - Prix : {{ r.chambre.prix }} $</p>
+    <p>Du {{ r.date_debut }} au {{ r.date_fin }}</p>
+
+    {% if r.services %}
+      <h4>Services associés :</h4>
+      <ul>
+        {% for s in r.services %}
+          <li>{{ s.service.nom }} (x{{ s.quantite }}) — {{ s.cout_total }} $</li>
+        {% endfor %}
+      </ul>
+      <p><strong>Total services :</strong> {{ r.total_services }} $</p>
+    {% else %}
+      <p><em>Aucun service ajouté.</em></p>
+    {% endif %}
+
+    <p><strong>Total général :</strong> {{ r.total_general }} $</p>
+    <hr>
+  </div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Ajouter une chambre{% endblock %}
+
+{% block content %}
+<h2>Ajouter une chambre</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <label for="id_image">Images de la chambre :</label>
+    <input type="file" name="image" multiple required>
+    <br><br>
+    <button type="submit" class="btn">Enregistrer</button>
+</form>
+<a href="{% url 'liste_chambres' %}">Voir les chambres</a>
+{% endblock %}

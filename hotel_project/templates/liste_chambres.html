@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Liste des chambres{% endblock %}
+
+{% block content %}
+<h2>Liste des chambres</h2>
+{% for chambre in chambres %}
+    <div style="margin-bottom: 30px;">
+        <h3>{{ chambre.numero }} - {{ chambre.type_chambre }}</h3>
+        <p>Prix: {{ chambre.prix }} $</p>
+        <p>Disponible: {{ chambre.disponible|yesno:"Oui,Non" }}</p>
+        <div style="display: flex; gap: 10px;">
+            {% for image in chambre.images.all %}
+                <img src="{{ image.image.url }}" alt="Image de la chambre" width="150" style="border: 1px solid #ccc;">
+            {% endfor %}
+        </div>
+    </div>
+{% empty %}
+    <p>Aucune chambre enregistrée.</p>
+{% endfor %}
+<a class="btn" href="{% url 'ajouter_chambre' %}">Ajouter une chambre</a>
+{% endblock %}

@@ -1,0 +1,129 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #007BFF;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+main {
+    padding: 40px;
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+h2 {
+    color: #333;
+}
+
+/* Page d'accueil */
+.accueil-container {
+    background-image: url('/static/images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    padding: 80px;
+    text-align: center;
+    min-height: 60vh;
+}
+
+input[type="date"] {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.accueil-wrapper {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-top: 40px;
+}
+
+.accueil-gauche {
+    width: 50%;
+    padding: 40px;
+    background-color: #f8f9fa;
+}
+
+.accueil-droite {
+    width: 50%;
+}
+
+.accueil-droite img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.accueil-wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    justify-content: flex-end; /* car la barre gauche est déjà dans base.html */
+    overflow: hidden;
+}
+
+.accueil-droite-seule {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.accueil-droite-seule img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}

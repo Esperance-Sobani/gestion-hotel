@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Ajouter un service à une réservation{% endblock %}
+
+{% block content %}
+<h2>Ajouter un service à une réservation</h2>
+
+{% if messages %}
+  {% for message in messages %}
+    <div class="message {{ message.tags }}">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn">Ajouter</button>
+</form>
+{% endblock %}
