@@ -10,7 +10,7 @@ from django.contrib import messages
 from .models import ServiceReservation
 from django.contrib import messages
 from .forms import ServiceReservationForm
-
+from datetime import date
 
 def ajouter_client(request):
     if request.method == 'POST':
@@ -46,15 +46,36 @@ def liste_chambres(request):
     chambres = Chambre.objects.all()
     return render(request, 'liste_chambres.html', {'chambres': chambres})
 
+
 def reserver_chambre(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('liste_reservations')  # à créer plus tard
+            reservation = form.save(commit=False)
+
+            # Vérifie si la date de début est dans le passé
+            if reservation.date_debut < date.today():
+                messages.error(request, "Vous ne pouvez pas réserver une chambre pour une date passée.")
+                return redirect('reserver_chambre')
+
+            # Vérifie si la chambre est déjà réservée pour la même période
+            conflits = Reservation.objects.filter(
+                chambre=reservation.chambre,
+                date_debut__lt=reservation.date_fin,
+                date_fin__gt=reservation.date_debut
+            )
+
+            if conflits.exists():
+                messages.error(request, "Cette chambre est déjà réservée pour cette période.")
+                return redirect('reserver_chambre')
+
+            reservation.save()
+            messages.success(request, "Réservation enregistrée avec succès.")
+            return redirect('liste_reservations')
     else:
         form = ReservationForm()
     return render(request, 'reserver_chambre.html', {'form': form})
+
 
 def liste_reservations(request):
     reservations = Reservation.objects.all()
@@ -102,6 +123,12 @@ def ajouter_service_reservation(request):
     else:
         form = ServiceReservationForm()
     return render(request, 'ajouter_service_reservation.html', {'form': form})
+
+
+def rapport_reservations(request):
+    reservations = Reservation.objects.select_related('chambre', 'client').all().order_by('-date_debut')
+    return render(request, 'rapport_reservations.html', {'reservations': reservations})
+
 
 
 

@@ -76,6 +76,39 @@
         .btn:hover {
             background-color: #0056b3;
         }
+
+
+        .reservation-card {
+            background-color: #ffffff;
+            padding: 20px;
+            border-left: 5px solid #007BFF;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .reservation-card h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .reservation-card ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .reservation-card li {
+            margin-bottom: 5px;
+        }
+
+        hr {
+            border: 0;
+            border-top: 1px solid #ccc;
+            margin-top: 20px;
+        }
+
+
+        
     </style>
 </head>
 <body>
@@ -89,6 +122,8 @@
         <a href="{% url 'reserver_chambre' %}">📅 Réserver</a>
         <a href="{% url 'liste_reservations' %}">📋 Réservations</a>
         <a href="{% url 'ajouter_service_reservation' %}">💼 Services</a>
+        <a href="{% url 'rapport_reservations' %}">🖨 Rapport Réservations</a>
+
     </div>
 
     <div class="main-content">
@@ -97,5 +132,13 @@
             {% endblock %}
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const today = new Date().toISOString().split('T')[0];
+            document.querySelector('input[name="date_debut"]').setAttribute('min', today);
+        });
+    </script>
+    
 </body>
 </html>

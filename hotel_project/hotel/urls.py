@@ -11,6 +11,9 @@ urlpatterns = [
     path('reserver/', views.reserver_chambre, name='reserver_chambre'),
     path('reservations/', views.liste_reservations, name='liste_reservations'),
     path('ajouter-service/', views.ajouter_service_reservation, name='ajouter_service_reservation'),
+    path('rapport-reservations/', views.rapport_reservations, name='rapport_reservations'),
+    path('rapport-reservations/', views.rapport_reservations, name='rapport_reservations'),
+    
 
 
 ]

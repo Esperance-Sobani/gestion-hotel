@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Rapport des Réservations{% endblock %}
+
+{% block content %}
+<div class="rapport">
+    <h2>📄 Rapport des Réservations</h2>
+    <button onclick="window.print()" class="btn">🖨 Imprimer</button>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Chambre</th>
+                <th>Date début</th>
+                <th>Date fin</th>
+                <th>Date de réservation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in reservations %}
+            <tr>
+                <td>{{ r.client.nom }}</td>
+                <td>{{ r.chambre.nom }}</td>
+                <td>{{ r.date_debut }}</td>
+                <td>{{ r.date_fin }}</td>
+                <td>{{ r.date_reservation }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

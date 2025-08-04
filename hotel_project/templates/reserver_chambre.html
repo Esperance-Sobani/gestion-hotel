@@ -2,14 +2,15 @@
 
 {% block title %}Réserver une chambre{% endblock %}
 
+{% block content %}
+<h2>Réserver une chambre</h2>
+
 {% if messages %}
     {% for message in messages %}
         <div class="message {{ message.tags }}">{{ message }}</div>
     {% endfor %}
 {% endif %}
 
-{% block content %}
-<h2>Réserver une chambre</h2>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}

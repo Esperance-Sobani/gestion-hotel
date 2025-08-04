@@ -127,3 +127,51 @@ input[type="date"] {
     object-fit: cover;
     display: block;
 }
+
+.rapport {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.rapport h2 {
+    margin-bottom: 20px;
+}
+
+.rapport table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+.rapport th, .rapport td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+@media print {
+    .btn {
+        display: none;
+    }
+}
+
+.message {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+
